@@ -9,7 +9,7 @@ export const ABOUT_PAGE = "ABOUT_PAGE";
 
 export const getlisthome = () => {
   console.log("2. next");
-
+  const token = localStorage.getItem("access_token");
   return (distpatch) => {
     //loading
     distpatch({
@@ -26,6 +26,9 @@ export const getlisthome = () => {
       method: "GET",
       url: `http://localhost:5000/home`,
       timeout: 12000,
+      headers: {
+        access_token: token,
+      },
     })
       .then((response) => {
         console.log("3. berhasil  data :", response.data);

@@ -44,7 +44,20 @@ const loginuser = async (req, res) => {
     res.send(errorhandling(400, error.message));
   }
 };
-
+const cekToken = async (req, res, next) => {
+  try {
+    const token = req.headers.access_token;
+    if (token) {
+      if (jwt.verify(token, process.env.SECRET_KEY)) {
+        next();
+      }
+    } else {
+      res.send(errorhandling(200, "Tidak Terautorisasi"));
+    }
+  } catch (error) {
+    res.send(errorhandling(400, error.message));
+  }
+};
 const listhome = async (req, res) => {
   try {
     const user = await models.posting.findOne({
@@ -85,4 +98,5 @@ export default {
   listhome,
   createposting,
   about,
+  cekToken,
 };
