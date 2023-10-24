@@ -19,11 +19,13 @@ const sequelize = new Sequelize(
     },
   }
 );
-
 function initModels(sequelize) {
   const about = _about.init(sequelize, DataTypes);
   const posting = _posting.init(sequelize, DataTypes);
   const users = _users.init(sequelize, DataTypes);
+
+  posting.belongsTo(users, { as: "user", foreignKey: "user_id" });
+  users.hasMany(posting, { as: "postings", foreignKey: "user_id" });
 
   return {
     about,
@@ -31,6 +33,7 @@ function initModels(sequelize) {
     users,
   };
 }
+
 const models = initModels(sequelize);
 export default models;
 export { sequelize };

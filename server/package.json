@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server",
-    "getModelDB": "sequelize-auto -o ./model -d ArticlePage -h localhost -v true -l esm -u postgres -p 5432 -x 123456a -e postgres"
+    "getModelDB": "sequelize-auto -o ./model2 -d ArticlePage -h localhost -v true -l esm -u postgres -p 5432 -x 123456a -e postgres"
   },
   "keywords": [],
   "author": "",
