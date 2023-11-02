@@ -180,15 +180,15 @@ export const aboutpage = () => {
     axios({
       method: "GET",
       url: `http://localhost:5000/about`,
-      timeout: 12000,
+      timeout: 100000,
     })
       .then((response) => {
-        console.log("3. berhasil  data :", response.data.data);
+        console.log("3. berhasil  data :", response.data.data_article);
         distpatch({
           type: ABOUT_PAGE,
           payload: {
             loading: false,
-            data: response.data.data[0],
+            data: response.data.data_article[0],
             errorMessage: false,
           },
         });

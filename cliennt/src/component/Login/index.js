@@ -38,7 +38,7 @@ function Login() {
           data: { usr, pswd },
         }).then((response) => {
           console.log("3. berhasil  data :", response.data);
-          const access_token = response.data.data_article;
+          const access_token = response.data.data_codigram;
           console.log(access_token);
           localStorage.setItem("access_token", access_token);
           if (response.data.data !== 400) {
